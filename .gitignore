@@ -26,7 +26,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
+.env.production
+.env.development
+
+# local documentation & progress trackers (STRICTLY LOCAL - NEVER PUSH TO GITHUB)
+PROGRESS_DOC.md
+LOCAL_PROGRESS_LOG.md
+LOCAL_WORKLOG.md
+*.local.md
 
 # vercel
 .vercel
