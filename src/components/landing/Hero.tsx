@@ -15,7 +15,10 @@ import {
   ChevronDown,
   ChevronUp,
   Sparkles,
-  Lock
+  Lock,
+  Zap,
+  Building2,
+  ArrowUpRight
 } from 'lucide-react';
 import { formatINR } from './formatters';
 
@@ -64,56 +67,57 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
-      {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-        <div
-          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-brand-400 to-indigo-200 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)'
-          }}
-        />
-      </div>
+    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-24 lg:pb-32">
+      {/* Background ambient lighting & radial mesh glows */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-brand-300/30 via-indigo-200/20 to-emerald-200/20 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-40 -z-10 h-[400px] w-[500px] rounded-full bg-blue-200/20 blur-[100px]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
+          
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-indigo-50/80 px-3.5 py-1.5 text-xs font-semibold text-indigo-800 shadow-subtle mb-6 backdrop-blur-sm">
-            <span className="flex h-2 w-2 rounded-full bg-brand-600 animate-pulse" />
-            <ShieldCheck className="h-3.5 w-3.5 text-brand-600" />
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-1.5 text-xs font-semibold text-indigo-900 shadow-card backdrop-blur-md mb-8 hover:border-indigo-300 transition-all">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-600" />
+            </span>
+            <ShieldCheck className="h-4 w-4 text-brand-600" />
             <span>Autonomous AP Payment Circuit-Breaker for Indian Enterprises</span>
+            <span className="hidden sm:inline-block text-slate-300">|</span>
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              GSTN GSP Ready
+            </span>
           </div>
 
           {/* High-Converting Headline */}
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12]">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.14]">
             Stop Leaking GST Input Tax Credit.{' '}
-            <span className="bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-800 bg-clip-text text-transparent">
+            <span className="block mt-1.5 bg-gradient-to-r from-brand-600 via-indigo-600 to-indigo-800 bg-clip-text text-transparent">
               Compliance-Gate Every Vendor Payment.
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 leading-relaxed font-normal">
+          <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             VetoRail synchronizes your ERP, GSTN GSTR-2B portal data, and bank disbursement rails to catch line-item discrepancies,
             auto-deduct Section 194Q TDS, enforce Section 43B(h) MSME clocks, and veto payment release until suppliers file their returns.
           </p>
 
           {/* Primary Action CTAs */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/app"
-              className="inline-flex items-center gap-2.5 rounded-lg bg-brand-600 px-6 py-3.5 text-base font-semibold text-white shadow-elevated transition hover:bg-brand-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+              className="inline-flex items-center gap-2.5 rounded-xl bg-brand-600 px-6 py-3.5 text-sm sm:text-base font-semibold text-white shadow-premium transition-all hover:bg-brand-700 hover:shadow-glow-brand hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
             >
               Launch AP Command Rail
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </Link>
 
             <a
               href="#roi-calculator"
-              className="inline-flex items-center gap-2.5 rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-slate-300 bg-white/90 px-6 py-3.5 text-sm sm:text-base font-semibold text-slate-700 shadow-card transition-all hover:bg-slate-50 hover:border-slate-400 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-slate-400"
             >
-              <Calculator className="h-5 w-5 text-slate-500" />
+              <Calculator className="h-4 w-4 sm:h-5 sm:w-5 text-slate-500" />
               Calculate ROI
             </a>
 
@@ -122,7 +126,7 @@ export function Hero() {
                 const el = document.getElementById('circuit-breaker-demo');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex items-center gap-2 rounded-lg px-4 py-3.5 text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+              className="inline-flex items-center gap-2 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-600 transition-colors hover:text-slate-900"
             >
               <Sparkles className="h-4 w-4 text-brand-600" />
               View Live Demo
@@ -131,32 +135,51 @@ export function Hero() {
 
           {/* Trust Highlights */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-500 font-medium">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Section 16(2)(aa) 100% Gated
             </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Section 43B(h) MSME SLA Defense
             </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Section 194Q Automated TDS
             </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Zero Integration Overhead
             </span>
           </div>
         </div>
 
+        {/* 3-Node Architecture Pipeline Visualizer */}
+        <div className="mx-auto mt-12 max-w-5xl">
+          <div className="hidden md:grid grid-cols-3 gap-4 mb-4 text-xs font-semibold text-slate-600">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-xs">
+              <Building2 className="w-4 h-4 text-brand-600" />
+              <span>1. Inward AP Data (SAP / Tally ERP)</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-50/80 border border-indigo-200/80 text-indigo-900 shadow-xs">
+              <Zap className="w-4 h-4 text-indigo-600" />
+              <span>2. VetoRail Autonomous Gating Hub</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-xs">
+              <Lock className="w-4 h-4 text-emerald-600" />
+              <span>3. Bank Rail (RazorpayX / Host-to-Host)</span>
+            </div>
+          </div>
+        </div>
+
         {/* Interactive Invoice Circuit-Breaker Preview Card */}
-        <div id="circuit-breaker-demo" className="mx-auto mt-14 max-w-4xl">
-          <div className="rounded-2xl border border-slate-200/90 bg-white shadow-elevated overflow-hidden transition-all duration-300">
+        <div id="circuit-breaker-demo" className="mx-auto max-w-5xl">
+          <div className="rounded-2xl border border-slate-200/90 bg-white/90 backdrop-blur-xl shadow-premium overflow-hidden transition-all duration-300 ring-1 ring-slate-900/5">
+            
             {/* Top Interactive Toolbar */}
-            <div className="border-b border-slate-200 bg-slate-50/80 px-4 py-3 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-brand-100 text-brand-700 font-mono text-xs font-bold">
+            <div className="border-b border-slate-200 bg-slate-50/90 px-4 py-3 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white font-mono text-xs font-bold shadow-sm">
                   AP
                 </div>
                 <div>
@@ -174,20 +197,20 @@ export function Hero() {
               </div>
 
               {/* Interactive Simulation Switcher */}
-              <div className="flex items-center gap-2 self-stretch sm:self-auto justify-between bg-white rounded-lg border border-slate-200 p-1.5 shadow-subtle">
+              <div className="flex items-center gap-2.5 self-stretch sm:self-auto justify-between bg-white rounded-xl border border-slate-200 p-1.5 shadow-subtle">
                 <span className="text-xs font-medium text-slate-600 pl-2">
                   Simulate GSTR-2B:
                 </span>
                 <button
                   type="button"
                   onClick={() => setIs2bFiled(!is2bFiled)}
-                  className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-semibold transition-all ${
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all shadow-xs ${
                     is2bFiled
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'bg-amber-100 text-amber-900 border border-amber-300'
+                      ? 'bg-emerald-600 text-white shadow-glow-pass hover:bg-emerald-700'
+                      : 'bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200'
                   }`}
                 >
-                  <RefreshCw className="h-3 w-3" />
+                  <RefreshCw className={`h-3 w-3 ${is2bFiled ? '' : 'animate-spin'}`} style={{ animationDuration: '4s' }} />
                   {is2bFiled ? 'Vendor Return Filed (PASS)' : 'Vendor Unfiled (HOLD)'}
                 </button>
               </div>
@@ -195,20 +218,20 @@ export function Hero() {
 
             {/* Circuit-Breaker Active Verdict Banner */}
             <div
-              className={`px-4 py-3 sm:px-6 border-b transition-colors duration-300 ${
+              className={`px-4 py-3.5 sm:px-6 border-b transition-colors duration-300 ${
                 is2bFiled
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
-                  : 'bg-amber-50 border-amber-200 text-amber-950'
+                  ? 'bg-emerald-50/90 border-emerald-200 text-emerald-900'
+                  : 'bg-amber-50/90 border-amber-200 text-amber-950'
               }`}
             >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                <div className="flex items-center gap-2.5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
                   {is2bFiled ? (
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white shadow-glow-pass">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-glow-pass">
                       <CheckCircle2 className="h-5 w-5" />
                     </div>
                   ) : (
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600 text-white shadow-glow-veto">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-600 text-white shadow-glow-veto">
                       <Ban className="h-5 w-5" />
                     </div>
                   )}
@@ -216,7 +239,7 @@ export function Hero() {
                     <div className="text-xs font-bold uppercase tracking-wider">
                       {is2bFiled ? 'Circuit-Breaker Verdict: PASS (Ready for Bank Release)' : 'Circuit-Breaker Verdict: COMPLIANCE VETO ACTIVE'}
                     </div>
-                    <div className="text-xs text-slate-700">
+                    <div className="text-xs text-slate-700 mt-0.5">
                       {is2bFiled
                         ? 'All 3 statutory gates validated. Section 16(2)(aa) verified, Section 194Q deducted. Disbursement safe.'
                         : 'Supplier return not reflected in GSTR-2B. Releasing payment risks ₹7,35,254 unclaimable ITC + 18% p.a. penal interest under Section 50.'}
@@ -242,11 +265,11 @@ export function Hero() {
             <div className="p-4 sm:p-6 space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
                 <div className="flex items-center gap-3 text-xs text-slate-500 font-mono">
-                  <span>Invoice: <strong className="text-slate-900">{invoiceData.invoiceNumber}</strong></span>
+                  <span>Invoice: <strong className="text-slate-900 font-semibold">{invoiceData.invoiceNumber}</strong></span>
                   <span>•</span>
-                  <span>PO: <strong className="text-slate-900">{invoiceData.poRef}</strong></span>
+                  <span>PO: <strong className="text-slate-900 font-semibold">{invoiceData.poRef}</strong></span>
                   <span>•</span>
-                  <span>GRN: <strong className="text-slate-900">{invoiceData.grnRef}</strong></span>
+                  <span>GRN: <strong className="text-slate-900 font-semibold">{invoiceData.grnRef}</strong></span>
                 </div>
 
                 {/* Statutory Triad Badges */}
@@ -280,7 +303,7 @@ export function Hero() {
 
               {/* Financial Metrics Grid */}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5">
+                <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs">
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                     Gross Invoice
                   </div>
@@ -292,31 +315,31 @@ export function Hero() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-amber-200/80 bg-amber-50/40 p-3.5">
-                  <div className="text-[11px] font-semibold uppercase tracking-wider text-amber-800">
+                <div className="rounded-xl border border-amber-200/80 bg-amber-50/50 p-4 shadow-xs">
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-amber-900">
                     Inward ITC at Risk
                   </div>
-                  <div className="mt-1 font-mono text-xl font-bold tabular-nums text-amber-700">
+                  <div className="mt-1 font-mono text-xl font-bold tabular-nums text-amber-800">
                     {formatINR(invoiceData.itcAmount)}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-amber-700/80">
+                  <div className="mt-0.5 text-[11px] text-amber-700">
                     18% IGST under Sec 16(2)(aa)
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-indigo-200/80 bg-indigo-50/40 p-3.5">
-                  <div className="text-[11px] font-semibold uppercase tracking-wider text-indigo-800">
+                <div className="rounded-xl border border-indigo-200/80 bg-indigo-50/50 p-4 shadow-xs">
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-indigo-900">
                     Sec 194Q TDS (0.1%)
                   </div>
                   <div className="mt-1 font-mono text-xl font-bold tabular-nums text-indigo-700">
                     -{formatINR(invoiceData.tdsAmount)}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-indigo-700/80">
+                  <div className="mt-0.5 text-[11px] text-indigo-700">
                     FY Spend &gt; ₹50 Lakhs
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5">
+                <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs">
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                     Net Disbursement
                   </div>
@@ -342,9 +365,9 @@ export function Hero() {
                 </button>
 
                 {showLineItems && (
-                  <div className="mt-3 overflow-hidden rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
                     <table className="w-full text-left text-xs">
-                      <thead className="border-b border-slate-200 bg-slate-100 text-slate-600">
+                      <thead className="border-b border-slate-200 bg-slate-50 text-slate-600">
                         <tr>
                           <th className="px-3 py-2 font-semibold">Description / HSN</th>
                           <th className="px-3 py-2 font-semibold font-mono">PO Qty</th>
@@ -356,16 +379,16 @@ export function Hero() {
                       </thead>
                       <tbody className="divide-y divide-slate-200 bg-white">
                         {invoiceData.lines.map((line, idx) => (
-                          <tr key={idx} className="hover:bg-slate-50/50">
-                            <td className="px-3 py-2 font-medium text-slate-900">
+                          <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
+                            <td className="px-3 py-2.5 font-medium text-slate-900">
                               {line.item} <span className="text-[10px] text-slate-400 font-mono">(HSN {line.hsn})</span>
                             </td>
-                            <td className="px-3 py-2 font-mono text-slate-700">{line.poQty}</td>
-                            <td className="px-3 py-2 font-mono text-slate-700">{line.grnQty}</td>
-                            <td className="px-3 py-2 font-mono text-slate-700">{line.invQty}</td>
-                            <td className="px-3 py-2 font-mono text-slate-700">{formatINR(line.rate)}</td>
-                            <td className="px-3 py-2">
-                              <span className="badge-pass text-[10px] py-0 px-2">
+                            <td className="px-3 py-2.5 font-mono text-slate-700">{line.poQty}</td>
+                            <td className="px-3 py-2.5 font-mono text-slate-700">{line.grnQty}</td>
+                            <td className="px-3 py-2.5 font-mono text-slate-700">{line.invQty}</td>
+                            <td className="px-3 py-2.5 font-mono text-slate-700">{formatINR(line.rate)}</td>
+                            <td className="px-3 py-2.5">
+                              <span className="badge-pass text-[10px] py-0.5 px-2">
                                 <CheckCircle2 className="h-3 w-3 text-emerald-600" />
                                 Exact
                               </span>
@@ -382,20 +405,21 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100 pt-4">
                 <div className="text-xs text-slate-500 flex items-center gap-1.5">
                   <Lock className="h-3.5 w-3.5 text-slate-400" />
-                  Bank Disbursement API: <strong>RazorpayX / Host-to-Host Connected</strong>
+                  Bank Disbursement API: <strong className="text-slate-700">RazorpayX / Host-to-Host Connected</strong>
                 </div>
 
                 <div className="flex items-center gap-3">
                   {is2bFiled ? (
                     <Link
                       href="/app"
-                      className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-glow-pass transition hover:bg-emerald-700"
+                      className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-glow-pass transition-all hover:bg-emerald-700 hover:shadow-lg"
                     >
                       <CheckCircle2 className="h-4 w-4" />
                       Release Payment via AP Rail (Pass)
+                      <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
                   ) : (
-                    <div className="inline-flex items-center gap-2 rounded-lg bg-amber-100 px-4 py-2 text-xs font-semibold text-amber-900 border border-amber-300">
+                    <div className="inline-flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2.5 text-xs font-semibold text-amber-900 border border-amber-300 shadow-xs">
                       <Ban className="h-4 w-4 text-rose-600" />
                       Disbursement Vetoed · Vendor Auto-Notified
                     </div>
@@ -403,8 +427,10 @@ export function Hero() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
   );

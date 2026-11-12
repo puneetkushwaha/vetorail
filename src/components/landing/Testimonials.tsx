@@ -1,5 +1,5 @@
 import React from 'react';
-import { Quote, Star, CheckCircle2 } from 'lucide-react';
+import { Star, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export function Testimonials() {
   const testimonials = [
@@ -39,19 +39,21 @@ export function Testimonials() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white border-t border-slate-200">
+    <section className="py-20 lg:py-28 bg-white border-t border-slate-200/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3.5 py-1 text-xs font-semibold text-indigo-800 mb-4 shadow-subtle">
-            <Star className="h-3.5 w-3.5 fill-indigo-600 text-brand-600" />
+        <div className="mx-auto max-w-3xl text-center mb-14">
+          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-50/80 px-4 py-1 text-xs font-semibold text-indigo-900 mb-4 shadow-subtle backdrop-blur-sm">
+            <Star className="h-3.5 w-3.5 fill-brand-600 text-brand-600" />
             <span>Proven Enterprise Outcomes</span>
+            <span className="text-slate-300">|</span>
+            <span className="text-emerald-700 font-mono text-[11px]">Zero Dispute Rate</span>
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Trusted by Leaders in Corporate Finance & Indirect Tax
           </h2>
-          <p className="mt-4 text-base text-slate-600 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             Discover how enterprise CFOs, Tax Heads, and AP Controllers protect bottom-line margins with VetoRail&apos;s autonomous compliance gating.
           </p>
         </div>
@@ -61,22 +63,26 @@ export function Testimonials() {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-canvas p-6 sm:p-8 shadow-subtle transition-all duration-200 hover:shadow-card hover:border-slate-300"
+              className="flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-canvas/70 backdrop-blur-sm p-6 sm:p-8 shadow-card transition-all duration-300 hover:shadow-elevated hover:border-slate-300 hover:-translate-y-1 ring-1 ring-slate-900/5"
             >
               <div>
                 {/* Metrics Pill */}
-                <div className="flex items-center justify-between gap-2 border-b border-slate-200/70 pb-4 mb-5">
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                <div className="flex items-center justify-between gap-2 border-b border-slate-200/80 pb-4 mb-5">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full shadow-2xs">
                     <CheckCircle2 className="h-3 w-3 text-emerald-600" />
                     {t.savings}
                   </span>
-                  <span className="text-[10px] font-mono text-slate-500">
+                  <span className="text-[11px] font-mono text-slate-500 font-medium">
                     {t.spendMetric}
                   </span>
                 </div>
 
-                {/* Quote Icon */}
-                <Quote className="h-8 w-8 text-brand-200 mb-3" />
+                {/* Star rating */}
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
 
                 {/* Body Quote */}
                 <p className="text-sm text-slate-700 leading-relaxed font-normal italic">
@@ -85,13 +91,16 @@ export function Testimonials() {
               </div>
 
               {/* Author Profile */}
-              <div className="mt-8 pt-5 border-t border-slate-200/70 flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-white font-bold text-sm shadow-sm">
+              <div className="mt-8 pt-5 border-t border-slate-200/80 flex items-center gap-3.5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-700 text-white font-bold text-sm shadow-sm">
                   {t.avatarInitials}
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">{t.name}</div>
-                  <div className="text-xs text-brand-700 font-medium">{t.role}</div>
+                  <div className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+                    {t.name}
+                    <ShieldCheck className="h-3.5 w-3.5 text-brand-600" />
+                  </div>
+                  <div className="text-xs text-brand-700 font-semibold">{t.role}</div>
                   <div className="text-[11px] text-slate-500">{t.company}</div>
                 </div>
               </div>

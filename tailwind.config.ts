@@ -9,15 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Fintech Slate Canvas Foundation (Stripe / Mercury style)
+        // Fintech Slate Canvas Foundation (Linear / Stripe / Mercury style)
         canvas: {
           DEFAULT: '#F8FAFC', // slate-50 neutral workspace canvas
           subtle: '#F1F5F9',  // slate-100 headers, inactive tabs, chip backgrounds
+          muted: '#E2E8F0',
         },
         surface: {
           DEFAULT: '#FFFFFF', // pure white card surface
           elevated: '#FFFFFF',
           hover: '#F8FAFC',
+          card: '#FFFFFF',
         },
         border: {
           subtle: '#F1F5F9',
@@ -25,7 +27,7 @@ const config: Config = {
           active: '#CBD5E1',  // slate-300 interactive focus borders
           strong: '#94A3B8',  // slate-400
         },
-        // Brand Indigo Palette
+        // Brand Indigo / Violet Palette
         brand: {
           50: '#EEF2FF',
           100: '#E0E7FF',
@@ -74,12 +76,14 @@ const config: Config = {
       boxShadow: {
         subtle: '0 1px 2px 0 rgba(15, 23, 42, 0.04)',
         card: '0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04)',
-        elevated: '0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04)',
-        drawer: '0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.06)',
-        'glow-pass': '0 0 12px -2px rgba(16, 185, 129, 0.35)',
-        'glow-hold': '0 0 12px -2px rgba(245, 158, 11, 0.35)',
-        'glow-veto': '0 0 12px -2px rgba(239, 68, 68, 0.35)',
-        'glow-msme': '0 0 14px -2px rgba(249, 115, 22, 0.40)',
+        elevated: '0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03)',
+        drawer: '0 25px 50px -12px rgba(15, 23, 42, 0.25)',
+        premium: '0 20px 40px -15px rgba(79, 70, 229, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8)',
+        'glow-pass': '0 0 14px -2px rgba(16, 185, 129, 0.40)',
+        'glow-hold': '0 0 14px -2px rgba(245, 158, 11, 0.40)',
+        'glow-veto': '0 0 14px -2px rgba(239, 68, 68, 0.45)',
+        'glow-msme': '0 0 16px -2px rgba(249, 115, 22, 0.45)',
+        'glow-brand': '0 0 20px -3px rgba(99, 102, 241, 0.35)',
       },
       borderRadius: {
         '2xs': '2px',
@@ -88,6 +92,8 @@ const config: Config = {
         md: '8px',
         lg: '12px',
         xl: '16px',
+        '2xl': '20px',
+        '3xl': '24px',
       },
       fontFamily: {
         sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -96,11 +102,26 @@ const config: Config = {
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'glow-msme': 'pulseGlow 2s ease-in-out infinite',
+        'shimmer': 'shimmer 2.5s infinite linear',
+        'float': 'float 4s ease-in-out infinite',
+        'beam': 'beam 2s linear infinite',
       },
       keyframes: {
         pulseGlow: {
           '0%, 100%': { boxShadow: '0 0 8px rgba(249, 115, 22, 0.3)' },
-          '50%': { boxShadow: '0 0 16px rgba(249, 115, 22, 0.6)' },
+          '50%': { boxShadow: '0 0 18px rgba(249, 115, 22, 0.65)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        beam: {
+          '0%': { strokeDashoffset: '100' },
+          '100%': { strokeDashoffset: '0' },
         },
       },
     },

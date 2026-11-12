@@ -23,16 +23,23 @@
     --border: 214.3 31.8% 91.4%; /* #E2E8F0 */
     --input: 214.3 31.8% 91.4%;
     --ring: 238.7 83.5% 58.6%;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-canvas text-slate-900 font-sans antialiased selection:bg-brand-100 selection:text-brand-900;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
 }
 
@@ -40,6 +47,15 @@
   /* Tabular Numerals for Indian Rupee figures and alphanumeric codes */
   .tabular-nums {
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Glassmorphism Surface */
+  .glass-card {
+    @apply bg-white/85 backdrop-blur-xl border border-slate-200/80 shadow-card hover:shadow-elevated transition-all duration-300;
+  }
+
+  .glass-header {
+    @apply bg-white/80 backdrop-blur-md border-b border-slate-200/70;
   }
 
   /* Luminous Badge Utility Classes */
@@ -66,5 +82,26 @@
   .badge-neutral {
     @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold
            bg-slate-100 text-slate-700 border border-slate-200;
+  }
+
+  /* Mesh Glow gradients */
+  .mesh-gradient-hero {
+    background: radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.12) 0%, rgba(244, 246, 248, 0) 70%);
+  }
+
+  /* Custom styled scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
   }
 }
