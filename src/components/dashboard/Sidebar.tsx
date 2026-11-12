@@ -10,10 +10,10 @@ import {
   Building2,
   BarChart3,
   Home,
-  ShieldCheck,
   ArrowUpRight
 } from 'lucide-react';
 import { useAPData } from '@/lib/data/dataProvider';
+import { VetoRailLogo } from '@/components/common/VetoRailLogo';
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -59,19 +59,19 @@ export function Sidebar() {
   return (
     <aside className="w-64 bg-white/95 backdrop-blur-md border-r border-slate-200/90 flex flex-col h-screen sticky top-0 shrink-0 select-none z-20 shadow-subtle">
       {/* Brand Header */}
-      <div className="h-16 flex items-center px-5 border-b border-slate-200/80 gap-3">
-        <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shadow-brand-500/25">
-          <ShieldCheck className="w-5 h-5" />
-        </div>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1.5">
-            <span className="font-extrabold text-slate-900 text-base tracking-tight">VetoRail</span>
-            <span className="px-1.5 py-0.5 rounded-full text-3xs font-bold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-200">
-              Enterprise
-            </span>
+      <div className="h-16 flex items-center px-4 border-b border-slate-200/80 gap-3">
+        <Link href="/" className="flex items-center gap-3 group">
+          <VetoRailLogo size="sm" showText={false} />
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <span className="font-extrabold text-slate-900 text-base tracking-tight">VetoRail</span>
+              <span className="px-1.5 py-0.5 rounded-full text-3xs font-bold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-200">
+                Enterprise
+              </span>
+            </div>
+            <span className="text-2xs text-slate-500 font-medium">AP Compliance & Gating Rail</span>
           </div>
-          <span className="text-2xs text-slate-500 font-medium">AP Compliance & Gating Rail</span>
-        </div>
+        </Link>
       </div>
 
       {/* Statutory Circuit-Breaker Status Pill */}

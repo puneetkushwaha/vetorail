@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { VetoRailLogo } from '@/components/common/VetoRailLogo';
 import {
   Hero,
   ClientMarquee,
@@ -11,7 +12,14 @@ import {
   StatutoryBadges,
   Testimonials,
   FaqSection,
-  Footer
+  RazorpayPillarsGrid,
+  RazorpayComparison,
+  RazorpayWorkflowShowcase,
+  RazorpayFeatureMatrix,
+  RazorpayGreenBanner,
+  RazorpayPricing,
+  RazorpayCustomerStories,
+  RazorpayMegaFooter
 } from '@/components/landing';
 
 export default function Home() {
@@ -26,7 +34,7 @@ export default function Home() {
             Statutory Notice
           </span>
           <span className="text-slate-700">
-            Section 43B(h) MSME 45-day payment enforcement & Section 16(2)(aa) 100% GSTR-2B gating active across Indian AP rails.
+            Section 43B(h) MSME 45-day payment enforcement &amp; Section 16(2)(aa) 100% GSTR-2B gating active across Indian AP rails.
           </span>
           <a
             href="#roi-calculator"
@@ -39,21 +47,11 @@ export default function Home() {
 
       {/* 2. Sticky Enterprise Navigation Header */}
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl transition-all shadow-subtle">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           
           {/* Brand Logo & Name */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-black text-base shadow-sm group-hover:shadow-glow-brand transition-all">
-              VR
-            </div>
-            <div>
-              <div className="text-xl font-black tracking-tight text-slate-900 leading-none">
-                VetoRail
-              </div>
-              <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500 mt-1">
-                Autonomous AP Compliance Rail
-              </div>
-            </div>
+            <VetoRailLogo size="md" showText={true} />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -61,11 +59,17 @@ export default function Home() {
             <a href="#features" className="transition hover:text-slate-900">
               Statutory Rails
             </a>
+            <a href="#comparison" className="transition hover:text-slate-900">
+              Why VetoRail
+            </a>
             <a href="#circuit-breaker-demo" className="transition hover:text-slate-900">
               3-Way Matching
             </a>
             <a href="#roi-calculator" className="transition hover:text-slate-900">
               ROI Calculator
+            </a>
+            <a href="#pricing" className="transition hover:text-slate-900">
+              Pricing
             </a>
             <a href="#trust" className="transition hover:text-slate-900">
               Trust &amp; GSTN
@@ -90,8 +94,25 @@ export default function Home() {
         {/* Hero Section */}
         <Hero />
 
+        {/* Razorpay 4-Pillar Grid (Screenshot 2) */}
+        <RazorpayPillarsGrid />
+
         {/* Enterprise Client Trust Marquee */}
         <ClientMarquee />
+
+        {/* Razorpay "Do more than just banking" Comparison Table (Screenshots 3 & 4) */}
+        <div id="comparison">
+          <RazorpayComparison />
+        </div>
+
+        {/* Razorpay Workflow Showcase: Simran Murty + Arun Kumar maker-checker (Screenshots 5, 6, 7) */}
+        <RazorpayWorkflowShowcase />
+
+        {/* Razorpay Feature Matrix: 3 Cards + 12-item Checklist (Screenshots 8 & 9) */}
+        <RazorpayFeatureMatrix />
+
+        {/* Razorpay Deep Pine Green Container (Screenshot 10) */}
+        <RazorpayGreenBanner />
 
         {/* Interactive 4-Step Product Workflow Sandbox */}
         <InteractiveWorkflowTour />
@@ -108,10 +129,16 @@ export default function Home() {
         {/* Statutory Compliance Shields */}
         <StatutoryBadges />
 
+        {/* Razorpay Customer Stories (Deep Navy Carousel) (Screenshot 13) */}
+        <RazorpayCustomerStories />
+
         {/* Enterprise Testimonials */}
         <Testimonials />
 
-        {/* Interactive Enterprise FAQ */}
+        {/* Razorpay Transparent 3-Tier Pricing (Screenshot 11) */}
+        <RazorpayPricing />
+
+        {/* Interactive Enterprise FAQ (Screenshot 14) */}
         <FaqSection />
 
         {/* Pre-Footer Enterprise CTA Banner */}
@@ -148,8 +175,8 @@ export default function Home() {
         </section>
       </main>
 
-      {/* 4. Enterprise Footer */}
-      <Footer />
+      {/* 4. Enterprise Mega Footer with RBI Banking Partners & Security Badges (Screenshot 15) */}
+      <RazorpayMegaFooter />
       
     </div>
   );
