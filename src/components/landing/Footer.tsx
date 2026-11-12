@@ -22,7 +22,7 @@ export function Footer() {
               Autonomous Accounts Payable (AP) Automation, 3-Way Line Matching, and Statutory Tax Compliance Rail for Indian Enterprises.
             </p>
             <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-mono">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
               <span>GSTN GSP / ASP Pipeline Operational</span>
             </div>
           </div>

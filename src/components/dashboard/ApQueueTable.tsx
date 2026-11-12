@@ -420,7 +420,7 @@ export function ApQueueTable({
 
                           {/* Section 43B(h) Countdown */}
                           {isRedOverdue && (
-                            <span className="text-3xs font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200 animate-pulse">
+                            <span className="text-3xs font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
                               OVERDUE! (Day {inv.daysElapsed}/45)
                             </span>
                           )}
@@ -504,7 +504,7 @@ export function ApQueueTable({
                           </span>
                         )}
                         {is2bUnfiled && (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-3xs font-semibold bg-rose-50 text-rose-800 border border-rose-200 shadow-2xs animate-pulse">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-3xs font-semibold bg-rose-50 text-rose-800 border border-rose-200 shadow-2xs">
                             <ShieldAlert className="w-3 h-3 text-rose-600" /> Missing / Unfiled
                           </span>
                         )}

@@ -207,7 +207,7 @@ export function Hero() {
                     <span className="text-xs font-black tracking-tight text-slate-900">VetoRail Mobile AP</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
                     <span className="text-[10px] font-mono font-bold text-emerald-700">Live Webhook</span>
                   </div>
                 </div>

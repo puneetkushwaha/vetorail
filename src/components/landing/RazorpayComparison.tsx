@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Check, X } from 'lucide-react';
+import { Check, X, Building2 } from 'lucide-react';
 import { GsapFadeIn } from '@/components/animations/GsapAnimations';
 
 export function RazorpayComparison() {
@@ -110,7 +110,7 @@ export function RazorpayComparison() {
             <div className="flex items-center justify-between pb-6 border-b border-slate-100">
               <div>
                 <div className="h-8 w-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-bold text-xs mb-2">
-                  ✓
+                  <Check className="w-5 h-5 text-white stroke-[3]" />
                 </div>
                 <h3 className="text-xl font-black text-slate-900">Business Banking+</h3>
                 <p className="text-xs text-slate-500 font-medium">(VetoRail powered AP Rail)</p>
@@ -148,7 +148,7 @@ export function RazorpayComparison() {
             <div className="flex items-center justify-between pb-6 border-b border-slate-200/80">
               <div>
                 <div className="h-8 w-8 rounded-lg bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs mb-2">
-                  🏛️
+                  <Building2 className="w-5 h-5 text-slate-600" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-800">Traditional Current Account</h3>
                 <p className="text-xs text-slate-400 font-medium">&amp; Manual AP Process</p>

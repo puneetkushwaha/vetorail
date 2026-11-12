@@ -24,7 +24,7 @@ export function ClientMarquee() {
           </div>
           <div className="flex items-center gap-4 text-2xs font-mono text-slate-500 font-semibold">
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
               ₹2,400+ Cr Inward AP Gated
             </span>
             <span>•</span>

@@ -31,7 +31,7 @@ export default function Home() {
       <div className="border-b border-indigo-100 bg-gradient-to-r from-indigo-50/95 via-brand-50/80 to-indigo-50/95 px-4 py-2.5 text-center text-xs font-medium text-indigo-950 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 flex-wrap">
           <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-brand-700 bg-white px-2.5 py-0.5 rounded-full border border-indigo-200 shadow-2xs">
-            <span className="inline-block h-2 w-2 rounded-full bg-brand-600 animate-pulse" />
+            <span className="inline-block h-2 w-2 rounded-full bg-brand-600" />
             Statutory Notice
           </span>
           <span className="text-slate-700">

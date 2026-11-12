@@ -43,13 +43,13 @@ export function VetoRailLogo({
   const px = iconPixelSizes[size] || 36;
 
   return (
-    <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
+    <div className={`inline-flex items-center gap-2.5 select-none shrink-0 ${className}`}>
       {/* Bespoke Geometric Vector Icon */}
       <svg
         viewBox="0 0 44 44"
         width={px}
         height={px}
-        style={{ width: `${px}px`, height: `${px}px`, minWidth: `${px}px`, minHeight: `${px}px` }}
+        style={{ width: `${px}px`, height: `${px}px`, minWidth: `${px}px`, minHeight: `${px}px`, maxWidth: `${px}px`, maxHeight: `${px}px`, display: 'inline-block' }}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={`${iconSizes[size]} shrink-0 transition-transform duration-300 hover:scale-105`}
