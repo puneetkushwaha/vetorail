@@ -474,6 +474,7 @@ describe('Milestone 4 Adversarial & Empirical Challenge Suite', () => {
         pan: 'AABCT8899Z',
         msme_category: 'SMALL',
         msme_reg_number: 'UDYAM-MH-03-0099881',
+        agreement_days: 45,
         compliance_score: 60,
         fy_spend: 5200000,
         bank_account: '1234567890',

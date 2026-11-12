@@ -5,3 +5,7 @@ export * from './StatutoryBadges';
 export * from './Testimonials';
 export * from './Footer';
 export * from './formatters';
+export * from './ClientMarquee';
+export * from './InteractiveWorkflowTour';
+export * from './LegacyVsVetoRail';
+export * from './FaqSection';

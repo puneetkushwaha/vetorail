@@ -3,10 +3,14 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import {
   Hero,
-  RoiCalculator,
+  ClientMarquee,
+  InteractiveWorkflowTour,
   FeaturePillars,
+  LegacyVsVetoRail,
+  RoiCalculator,
   StatutoryBadges,
   Testimonials,
+  FaqSection,
   Footer
 } from '@/components/landing';
 
@@ -39,7 +43,7 @@ export default function Home() {
           
           {/* Brand Logo & Name */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-black text-base shadow-sm group-hover:shadow-glow-brand transition-all">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-black text-base shadow-sm group-hover:shadow-glow-brand transition-all">
               VR
             </div>
             <div>
@@ -86,8 +90,17 @@ export default function Home() {
         {/* Hero Section */}
         <Hero />
 
-        {/* 3 Deep-Dive Feature Pillars */}
+        {/* Enterprise Client Trust Marquee */}
+        <ClientMarquee />
+
+        {/* Interactive 4-Step Product Workflow Sandbox */}
+        <InteractiveWorkflowTour />
+
+        {/* 3 Deep-Dive Feature Pillars (Bento Grid) */}
         <FeaturePillars />
+
+        {/* Legacy Manual AP vs VetoRail Battle Matrix */}
+        <LegacyVsVetoRail />
 
         {/* Interactive ROI Calculator */}
         <RoiCalculator />
@@ -97,6 +110,9 @@ export default function Home() {
 
         {/* Enterprise Testimonials */}
         <Testimonials />
+
+        {/* Interactive Enterprise FAQ */}
+        <FaqSection />
 
         {/* Pre-Footer Enterprise CTA Banner */}
         <section className="py-16 sm:py-24 bg-gradient-to-b from-white to-canvas border-t border-slate-200/80">

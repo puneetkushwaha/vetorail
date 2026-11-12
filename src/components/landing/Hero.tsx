@@ -18,7 +18,8 @@ import {
   Lock,
   Zap,
   Building2,
-  ArrowUpRight
+  ArrowUpRight,
+  Shield
 } from 'lucide-react';
 import { formatINR } from './formatters';
 
@@ -69,14 +70,14 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 lg:pt-24 lg:pb-32">
       {/* Background ambient lighting & radial mesh glows */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-brand-300/30 via-indigo-200/20 to-emerald-200/20 blur-[120px]" />
-      <div className="pointer-events-none absolute top-1/3 -right-40 -z-10 h-[400px] w-[500px] rounded-full bg-blue-200/20 blur-[100px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[650px] w-[1000px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-brand-300/35 via-indigo-200/25 to-emerald-200/25 blur-[130px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-40 -z-10 h-[450px] w-[550px] rounded-full bg-blue-200/20 blur-[110px]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-1.5 text-xs font-semibold text-indigo-900 shadow-card backdrop-blur-md mb-8 hover:border-indigo-300 transition-all">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-indigo-200/90 bg-white/95 px-4 py-1.5 text-xs font-semibold text-indigo-900 shadow-card backdrop-blur-md mb-8 hover:border-indigo-300 transition-all hover:-translate-y-0.5">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-600" />
@@ -84,7 +85,7 @@ export function Hero() {
             <ShieldCheck className="h-4 w-4 text-brand-600" />
             <span>Autonomous AP Payment Circuit-Breaker for Indian Enterprises</span>
             <span className="hidden sm:inline-block text-slate-300">|</span>
-            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 font-bold">
               GSTN GSP Ready
             </span>
           </div>
@@ -135,19 +136,19 @@ export function Hero() {
 
           {/* Trust Highlights */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-500 font-medium">
-            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+            <span className="flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Section 16(2)(aa) 100% Gated
             </span>
-            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+            <span className="flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Section 43B(h) MSME SLA Defense
             </span>
-            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+            <span className="flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Section 194Q Automated TDS
             </span>
-            <span className="flex items-center gap-1.5 bg-white/70 px-3 py-1 rounded-full border border-slate-200/60 shadow-xs">
+            <span className="flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
               Zero Integration Overhead
             </span>
@@ -155,37 +156,61 @@ export function Hero() {
         </div>
 
         {/* 3-Node Architecture Pipeline Visualizer */}
-        <div className="mx-auto mt-12 max-w-5xl">
+        <div className="mx-auto mt-14 max-w-5xl">
           <div className="hidden md:grid grid-cols-3 gap-4 mb-4 text-xs font-semibold text-slate-600">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-xs">
+            <div className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 border border-slate-200/90 shadow-card">
               <Building2 className="w-4 h-4 text-brand-600" />
               <span>1. Inward AP Data (SAP / Tally ERP)</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-50/80 border border-indigo-200/80 text-indigo-900 shadow-xs">
-              <Zap className="w-4 h-4 text-indigo-600" />
+            <div className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-indigo-50/90 border border-indigo-200/90 text-indigo-900 shadow-card">
+              <Zap className="w-4 h-4 text-indigo-600 animate-pulse" />
               <span>2. VetoRail Autonomous Gating Hub</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-xs">
+            <div className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 border border-slate-200/90 shadow-card">
               <Lock className="w-4 h-4 text-emerald-600" />
               <span>3. Bank Rail (RazorpayX / Host-to-Host)</span>
             </div>
           </div>
         </div>
 
-        {/* Interactive Invoice Circuit-Breaker Preview Card */}
-        <div id="circuit-breaker-demo" className="mx-auto max-w-5xl">
-          <div className="rounded-2xl border border-slate-200/90 bg-white/90 backdrop-blur-xl shadow-premium overflow-hidden transition-all duration-300 ring-1 ring-slate-900/5">
+        {/* Interactive Invoice Circuit-Breaker Preview Card with Floating Badges */}
+        <div id="circuit-breaker-demo" className="mx-auto max-w-5xl relative">
+          
+          {/* Floating FinTech Badge 1 (Left) */}
+          <div className="hidden xl:flex absolute -left-12 top-24 z-20 items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-elevated px-3.5 py-2 rounded-2xl animate-float">
+            <div className="p-1.5 rounded-xl bg-amber-50 text-amber-700 border border-amber-200">
+              <Shield className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-[10px] uppercase font-bold text-slate-400">At-Risk Inward ITC</div>
+              <div className="text-xs font-mono font-bold text-amber-800">₹7,35,254 Shielded</div>
+            </div>
+          </div>
+
+          {/* Floating FinTech Badge 2 (Right) */}
+          <div className="hidden xl:flex absolute -right-12 bottom-20 z-20 items-center gap-2.5 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-elevated px-3.5 py-2 rounded-2xl animate-float" style={{ animationDelay: '1.5s' }}>
+            <div className="p-1.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <Lock className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-[10px] uppercase font-bold text-slate-400">RazorpayX Connected</div>
+              <div className="text-xs font-mono font-bold text-emerald-800">RTGS / NEFT Ready</div>
+            </div>
+          </div>
+
+          {/* Main Card */}
+          <div className="rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-xl shadow-premium overflow-hidden transition-all duration-300 ring-1 ring-slate-900/5">
             
             {/* Top Interactive Toolbar */}
-            <div className="border-b border-slate-200 bg-slate-50/90 px-4 py-3 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="border-b border-slate-200 bg-slate-50/90 px-4 py-3.5 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white font-mono text-xs font-bold shadow-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-white font-mono text-xs font-bold shadow-sm">
                   AP
                 </div>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                     Autonomous Circuit-Breaker Gate Preview
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                   <div className="text-sm font-bold text-slate-900 flex items-center gap-2">
                     {invoiceData.vendorName}
@@ -197,14 +222,14 @@ export function Hero() {
               </div>
 
               {/* Interactive Simulation Switcher */}
-              <div className="flex items-center gap-2.5 self-stretch sm:self-auto justify-between bg-white rounded-xl border border-slate-200 p-1.5 shadow-subtle">
+              <div className="flex items-center gap-2.5 self-stretch sm:self-auto justify-between bg-white rounded-2xl border border-slate-200 p-1.5 shadow-subtle">
                 <span className="text-xs font-medium text-slate-600 pl-2">
                   Simulate GSTR-2B:
                 </span>
                 <button
                   type="button"
                   onClick={() => setIs2bFiled(!is2bFiled)}
-                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all shadow-xs ${
+                  className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all shadow-xs ${
                     is2bFiled
                       ? 'bg-emerald-600 text-white shadow-glow-pass hover:bg-emerald-700'
                       : 'bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200'
@@ -218,21 +243,21 @@ export function Hero() {
 
             {/* Circuit-Breaker Active Verdict Banner */}
             <div
-              className={`px-4 py-3.5 sm:px-6 border-b transition-colors duration-300 ${
+              className={`px-4 py-4 sm:px-6 border-b transition-colors duration-300 ${
                 is2bFiled
                   ? 'bg-emerald-50/90 border-emerald-200 text-emerald-900'
                   : 'bg-amber-50/90 border-amber-200 text-amber-950'
               }`}
             >
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3.5">
                   {is2bFiled ? (
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-glow-pass">
-                      <CheckCircle2 className="h-5 w-5" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-glow-pass">
+                      <CheckCircle2 className="h-6 w-6" />
                     </div>
                   ) : (
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-600 text-white shadow-glow-veto">
-                      <Ban className="h-5 w-5" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-rose-600 text-white shadow-glow-veto">
+                      <Ban className="h-6 w-6" />
                     </div>
                   )}
                   <div>
@@ -303,11 +328,11 @@ export function Hero() {
 
               {/* Financial Metrics Grid */}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs">
+                <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs">
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                     Gross Invoice
                   </div>
-                  <div className="mt-1 font-mono text-xl font-bold tabular-nums text-slate-900">
+                  <div className="mt-1.5 font-mono text-xl font-bold tabular-nums text-slate-900">
                     {formatINR(invoiceData.grossAmount)}
                   </div>
                   <div className="mt-0.5 text-[11px] text-slate-500">
@@ -315,11 +340,11 @@ export function Hero() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-amber-200/80 bg-amber-50/50 p-4 shadow-xs">
+                <div className="rounded-2xl border border-amber-200/80 bg-amber-50/50 p-4 shadow-xs">
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-amber-900">
                     Inward ITC at Risk
                   </div>
-                  <div className="mt-1 font-mono text-xl font-bold tabular-nums text-amber-800">
+                  <div className="mt-1.5 font-mono text-xl font-bold tabular-nums text-amber-800">
                     {formatINR(invoiceData.itcAmount)}
                   </div>
                   <div className="mt-0.5 text-[11px] text-amber-700">
@@ -327,11 +352,11 @@ export function Hero() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-indigo-200/80 bg-indigo-50/50 p-4 shadow-xs">
+                <div className="rounded-2xl border border-indigo-200/80 bg-indigo-50/50 p-4 shadow-xs">
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-indigo-900">
                     Sec 194Q TDS (0.1%)
                   </div>
-                  <div className="mt-1 font-mono text-xl font-bold tabular-nums text-indigo-700">
+                  <div className="mt-1.5 font-mono text-xl font-bold tabular-nums text-indigo-700">
                     -{formatINR(invoiceData.tdsAmount)}
                   </div>
                   <div className="mt-0.5 text-[11px] text-indigo-700">
@@ -339,11 +364,11 @@ export function Hero() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs">
+                <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 shadow-xs">
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                     Net Disbursement
                   </div>
-                  <div className="mt-1 font-mono text-xl font-bold tabular-nums text-slate-900">
+                  <div className="mt-1.5 font-mono text-xl font-bold tabular-nums text-slate-900">
                     {formatINR(invoiceData.netPayable)}
                   </div>
                   <div className="mt-0.5 text-[11px] text-slate-500">
@@ -365,7 +390,7 @@ export function Hero() {
                 </button>
 
                 {showLineItems && (
-                  <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
+                  <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
                     <table className="w-full text-left text-xs">
                       <thead className="border-b border-slate-200 bg-slate-50 text-slate-600">
                         <tr>
@@ -435,3 +460,5 @@ export function Hero() {
     </section>
   );
 }
+
+export default Hero;
