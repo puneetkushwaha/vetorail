@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Check, X } from 'lucide-react';
+import { GsapFadeIn } from '@/components/animations/GsapAnimations';
 
 export function RazorpayComparison() {
   const rows = [
