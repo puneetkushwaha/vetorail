@@ -25,7 +25,7 @@ $$ LANGUAGE plpgsql;
 -- Profiles of enterprise suppliers, MSME classifications, and statutory GSTIN/PAN.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS vendors (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
     name VARCHAR(255) NOT NULL,
     gstin VARCHAR(15) NOT NULL UNIQUE,
     pan VARCHAR(10) NOT NULL,
@@ -70,9 +70,9 @@ CREATE TRIGGER trg_vendors_updated_at
 -- Commercial purchase orders authorized by procurement.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS purchase_orders (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
     po_number VARCHAR(50) NOT NULL UNIQUE,
-    vendor_id UUID NOT NULL REFERENCES vendors(id) ON DELETE RESTRICT,
+    vendor_id VARCHAR(64) NOT NULL REFERENCES vendors(id) ON DELETE RESTRICT,
     po_date DATE NOT NULL,
     total_amount NUMERIC(14, 2) NOT NULL DEFAULT 0.00,
     currency VARCHAR(3) NOT NULL DEFAULT 'INR',
@@ -99,8 +99,8 @@ CREATE TRIGGER trg_purchase_orders_updated_at
 -- Granular line items authorized in purchase order contracts.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS purchase_order_items (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    po_id UUID NOT NULL REFERENCES purchase_orders(id) ON DELETE CASCADE,
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    po_id VARCHAR(64) NOT NULL REFERENCES purchase_orders(id) ON DELETE CASCADE,
     line_number INTEGER NOT NULL,
     item_sku VARCHAR(50) NOT NULL,
     description TEXT NOT NULL,
@@ -124,9 +124,9 @@ CREATE TABLE IF NOT EXISTS purchase_order_items (
 -- Warehouse physical receiving and quality inspection receipts.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS goods_receipt_notes (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
     grn_number VARCHAR(50) NOT NULL UNIQUE,
-    po_id UUID NOT NULL REFERENCES purchase_orders(id) ON DELETE RESTRICT,
+    po_id VARCHAR(64) NOT NULL REFERENCES purchase_orders(id) ON DELETE RESTRICT,
     grn_date DATE NOT NULL,
     received_by VARCHAR(100) NOT NULL,
     remarks TEXT,
@@ -150,9 +150,9 @@ CREATE TRIGGER trg_goods_receipt_notes_updated_at
 -- Physical inventory quantity received, accepted, and rejected.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS goods_receipt_note_items (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    grn_id UUID NOT NULL REFERENCES goods_receipt_notes(id) ON DELETE CASCADE,
-    po_item_id UUID REFERENCES purchase_order_items(id) ON DELETE SET NULL,
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    grn_id VARCHAR(64) NOT NULL REFERENCES goods_receipt_notes(id) ON DELETE CASCADE,
+    po_item_id VARCHAR(64) REFERENCES purchase_order_items(id) ON DELETE SET NULL,
     item_sku VARCHAR(50) NOT NULL,
     quantity_received NUMERIC(12, 2) NOT NULL,
     quantity_accepted NUMERIC(12, 2) NOT NULL,
@@ -174,11 +174,11 @@ CREATE TABLE IF NOT EXISTS goods_receipt_note_items (
 -- Centralized AP invoice ingestion with 3-way matching and statutory gates.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS invoices (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
     invoice_number VARCHAR(50) NOT NULL,
-    vendor_id UUID NOT NULL REFERENCES vendors(id) ON DELETE RESTRICT,
-    po_id UUID REFERENCES purchase_orders(id) ON DELETE SET NULL,
-    grn_id UUID REFERENCES goods_receipt_notes(id) ON DELETE SET NULL,
+    vendor_id VARCHAR(64) NOT NULL REFERENCES vendors(id) ON DELETE RESTRICT,
+    po_id VARCHAR(64) REFERENCES purchase_orders(id) ON DELETE SET NULL,
+    grn_id VARCHAR(64) REFERENCES goods_receipt_notes(id) ON DELETE SET NULL,
     invoice_date DATE NOT NULL,
     due_date DATE NOT NULL,
     subtotal NUMERIC(14, 2) NOT NULL,
@@ -237,9 +237,9 @@ CREATE TRIGGER trg_invoices_updated_at
 -- Billed line items from supplier tax invoice.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS invoice_items (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    invoice_id UUID NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
-    po_item_id UUID REFERENCES purchase_order_items(id) ON DELETE SET NULL,
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    invoice_id VARCHAR(64) NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
+    po_item_id VARCHAR(64) REFERENCES purchase_order_items(id) ON DELETE SET NULL,
     item_sku VARCHAR(50) NOT NULL,
     description TEXT NOT NULL,
     hsn_sac VARCHAR(10) NOT NULL,
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS invoice_items (
 -- GSTN portal auto-drafted Input Tax Credit (ITC) statement records.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS gstr2b_records (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
     vendor_gstin VARCHAR(15) NOT NULL,
     invoice_number VARCHAR(50) NOT NULL,
     invoice_date DATE NOT NULL,
@@ -301,8 +301,8 @@ CREATE TABLE IF NOT EXISTS gstr2b_records (
 -- Cryptographic and tamper-evident audit trail of AP compliance events.
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS compliance_audit_logs (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    invoice_id UUID NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
+    id VARCHAR(64) PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    invoice_id VARCHAR(64) NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
     event_type VARCHAR(50) NOT NULL,
     actor VARCHAR(100) NOT NULL DEFAULT 'SYSTEM_AUTONOMOUS_RAIL',
     previous_status VARCHAR(30),
@@ -320,6 +320,18 @@ CREATE TABLE IF NOT EXISTS compliance_audit_logs (
             'TDS_194Q_CALCULATED',
             'MSME_43BH_EVALUATED',
             'GATE_STATUS_CHANGED',
+            'GATE_EVALUATION',
+            'COMPLIANCE_HOLD',
+            'PRICE_VARIANCE_HOLD',
+            'QTY_OVERBILLING_HOLD',
+            'MSME_SLA_FAST_TRACK',
+            'MSME_STATUTORY_BREACH',
+            'TDS_194Q_DEDUCTION',
+            'GATE_REJECTION',
+            'GATE_MANUAL_PASS',
+            'GATE_MANUAL_HOLD',
+            'GATE_MANUAL_REJECT',
+            'GSTR2B_SIMULATED_SYNC',
             'MANUAL_OVERRIDE',
             'VENDOR_NOTIFIED',
             'PAYMENT_RELEASED',

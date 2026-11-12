@@ -244,8 +244,32 @@ export function APDataProvider({ children }: { children: React.ReactNode }) {
       .filter((inv) => inv.msmeUrgency === 'RED_OVERDUE' || inv.msmeUrgency === 'ORANGE')
       .reduce((sum, inv) => sum + inv.subtotal * 0.30, 0);
 
-    // Line Item Overbilling Prevented
-    const leakagePrevented = 400000 + 180000; // Scenarios 3 and 4
+    // Line Item Overbilling & Rate Variance Prevented (Dynamically Evaluated)
+    const leakagePrevented = enrichedInvoices.reduce((totalLeakage, inv) => {
+      let invLeakage = 0;
+      inv.items.forEach((item) => {
+        const poItem = inv.poItems?.find((p) => p.id === item.po_item_id || p.item_sku === item.item_sku);
+        const grnItem = inv.grnItems?.find((g) => g.po_item_id === item.po_item_id || g.item_sku === item.item_sku);
+
+        // Price variance
+        if (poItem && item.unit_rate > poItem.unit_price) {
+          invLeakage += (item.unit_rate - poItem.unit_price) * item.billed_qty;
+        }
+
+        // Quantity overbilling
+        if (grnItem && item.billed_qty > grnItem.quantity_accepted) {
+          const baseRate = poItem ? poItem.unit_price : item.unit_rate;
+          invLeakage += (item.billed_qty - grnItem.quantity_accepted) * baseRate;
+        }
+      });
+      return totalLeakage + invLeakage;
+    }, 0);
+
+    const totalInvoicesCount = invoicesState.length;
+    const passedCount = passedInvoices.length;
+    const heldCount = heldInvoices.length;
+    const rejectedCount = rejectedInvoices.length;
+    const passRate = totalInvoicesCount > 0 ? (passedCount / totalInvoicesCount) * 100 : 0;
 
     return {
       totalSpend,
@@ -255,10 +279,14 @@ export function APDataProvider({ children }: { children: React.ReactNode }) {
       itcProtected,
       msmeOverdueRisk,
       leakagePrevented,
-      totalInvoicesCount: invoicesState.length,
-      passedCount: passedInvoices.length,
-      heldCount: heldInvoices.length,
-      rejectedCount: rejectedInvoices.length
+      totalInvoicesCount,
+      passedCount,
+      heldCount,
+      rejectedCount,
+      totalItcSaved: itcProtected,
+      heldWorkingCapital: totalHeldAmount,
+      activeHoldsCount: heldCount,
+      passRate
     };
   }, [invoicesState, enrichedInvoices]);
 
@@ -396,7 +424,7 @@ export function APDataProvider({ children }: { children: React.ReactNode }) {
         invoice_id: targetInvoice.id,
         event_type: 'GSTR2B_SIMULATED_SYNC',
         actor: 'GSTN_SYNC_SIMULATOR',
-        previous_status: 'HOLD',
+        previous_status: targetInvoice.compliance_gate_status,
         new_status: 'PASS',
         reason: 'Simulated GSTR-2B live sync: Supplier GSTR-1 return detected on GSTN. ITC unlocked under Section 16(2)(aa).',
         metadata: {

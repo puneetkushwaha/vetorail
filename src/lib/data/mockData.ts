@@ -551,8 +551,8 @@ export const mockInvoices: Invoice[] = [
     subtotal: 5400000, // Billed ₹1,080 vs PO ₹1,000 (+8%)
     tax_amount: 972000,
     total_amount: 6372000,
-    tds_194q_amount: 14000, // FY spend crosses ₹50L
-    net_payable: 6358000,
+    tds_194q_amount: 1600, // 0.1% on ₹16L excess over ₹50L threshold
+    net_payable: 6370400,
     match_status: 'PRICE_VARIANCE_HOLD',
     gstr2b_status: 'PASS_2B',
     compliance_gate_status: 'HOLD',

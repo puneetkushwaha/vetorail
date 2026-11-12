@@ -88,7 +88,7 @@ describe('Empirical Verification: Milestone 1 Architecture & Mock Datasets', () 
       ];
 
       fkRelations.forEach(({ fkCol, refTable, refCol }) => {
-        const fkPattern = new RegExp(`${fkCol}\\s+UUID(?:\\s+NOT\\s+NULL)?\\s+REFERENCES\\s+${refTable}\\(${refCol}\\)`, 'i');
+        const fkPattern = new RegExp(`${fkCol}\\s+(?:UUID|VARCHAR\\(64\\))(?:\\s+NOT\\s+NULL)?\\s+REFERENCES\\s+${refTable}\\(${refCol}\\)`, 'i');
         expect(fkPattern.test(schemaSql), `Missing or malformed FK ${fkCol} -> ${refTable}(${refCol})`).toBe(true);
       });
     });

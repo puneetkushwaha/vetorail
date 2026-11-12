@@ -219,6 +219,7 @@ export interface Invoice {
   gstr2b_status: Gstr2bStatus;
   compliance_gate_status: ComplianceGateStatus;
   risk_score: number; // 0 to 100
+  is_rcm?: boolean;
   created_at: string;
   updated_at?: string;
 }
@@ -424,6 +425,11 @@ export interface DashboardMetrics {
   passedCount: number;
   heldCount: number;
   rejectedCount: number;
+  // Full contract compatibility aliases
+  totalItcSaved: number;
+  heldWorkingCapital: number;
+  activeHoldsCount: number;
+  passRate: number;
 }
 
 /**
