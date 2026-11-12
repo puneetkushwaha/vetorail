@@ -17,3 +17,4 @@ export * from './RazorpayGreenBanner';
 export * from './RazorpayPricing';
 export * from './RazorpayCustomerStories';
 export * from './RazorpayMegaFooter';
+export * from './InteractiveBentoPlayground';

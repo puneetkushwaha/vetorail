@@ -19,7 +19,8 @@ import {
   RazorpayGreenBanner,
   RazorpayPricing,
   RazorpayCustomerStories,
-  RazorpayMegaFooter
+  RazorpayMegaFooter,
+  InteractiveBentoPlayground
 } from '@/components/landing';
 
 export default function Home() {
@@ -104,6 +105,9 @@ export default function Home() {
         <div id="comparison">
           <RazorpayComparison />
         </div>
+
+        {/* Zaggle & Stripe Style Interactive AP Bento Playground */}
+        <InteractiveBentoPlayground />
 
         {/* Razorpay Workflow Showcase: Simran Murty + Arun Kumar maker-checker (Screenshots 5, 6, 7) */}
         <RazorpayWorkflowShowcase />
